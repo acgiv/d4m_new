@@ -46,4 +46,10 @@ class _PercorrenzaAuto extends State<PercorrenzaAutoScreen> {
       ],
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController.dispose();
+  }
 }

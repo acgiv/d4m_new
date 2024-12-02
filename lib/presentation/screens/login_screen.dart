@@ -1,6 +1,5 @@
 import 'package:d4m_new/business_logic/cubits/account_cubit.dart';
 import 'package:d4m_new/data/models/account_model.dart';
-import 'package:d4m_new/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -133,15 +132,7 @@ class _LoginScreen extends State<LoginScreen> {
                     BlocListener<AccountCubit, AccountState>(
                       listener: (context, state) {
                         if (state is AuthSuccess) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                content:
-                                    Text("Login riuscito: ${state.token}")),
-                          );
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const HomePage(
-                                    titleHome: 'Device4_Mobility',
-                                  )));
+                          Navigator.of(context).pushNamed('/home');
                         } else if (state is AuthError) {
                           // Errore: Mostra un messaggio di errore
                           ScaffoldMessenger.of(context).showSnackBar(

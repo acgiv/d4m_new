@@ -214,40 +214,37 @@ class _HomePage extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<NavigationCubit>(
-      create: (_) => NavigationCubit(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: BlocBuilder<NavigationCubit, Navigationbottombar>(
-            builder: (context, state) {
-              return Text(
-                screensMap[state.indexPage]!['title'],
-                textAlign: TextAlign.center,
-              );
-            },
-          ),
-        ),
-        body: BlocBuilder<NavigationCubit, Navigationbottombar>(
-            builder: (context, state) {
-          return screensMap[state.indexPage]!['widget'];
-        }),
-        drawer: const DrawerWidget(),
-        bottomNavigationBar: const BottomBarWidget(),
-        floatingActionButton: BlocBuilder<NavigationCubit, Navigationbottombar>(
+    return Scaffold(
+      appBar: AppBar(
+        title: BlocBuilder<NavigationCubit, Navigationbottombar>(
           builder: (context, state) {
-            return state.indexPage == 2
-                ? FloatingActionButton(
-                    shape: const CircleBorder(),
-                    onPressed: () => _showInputDialog(context, listCard),
-                    // Icona del FAB
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    child: Icon(
-                      Icons.add,
-                      color: Theme.of(context).colorScheme.tertiary,
-                    ))
-                : const SizedBox.shrink();
+            return Text(
+              screensMap[state.indexPage]!['title'],
+              textAlign: TextAlign.center,
+            );
           },
         ),
+      ),
+      body: BlocBuilder<NavigationCubit, Navigationbottombar>(
+          builder: (context, state) {
+        return screensMap[state.indexPage]!['widget'];
+      }),
+      drawer: const DrawerWidget(),
+      bottomNavigationBar: const BottomBarWidget(),
+      floatingActionButton: BlocBuilder<NavigationCubit, Navigationbottombar>(
+        builder: (context, state) {
+          return state.indexPage == 2
+              ? FloatingActionButton(
+                  shape: const CircleBorder(),
+                  onPressed: () => _showInputDialog(context, listCard),
+                  // Icona del FAB
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  child: Icon(
+                    Icons.add,
+                    color: Theme.of(context).colorScheme.tertiary,
+                  ))
+              : const SizedBox.shrink();
+        },
       ),
     );
   }

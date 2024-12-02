@@ -22,15 +22,15 @@ class AccountRepository {
             responseData.containsKey('token')) {
           return responseData['token'];
         } else {
-          print('Token non trovato nella risposta JSON.');
+          //print('Token non trovato nella risposta JSON.');
           return null;
         }
       } catch (e) {
-        print('Errore nella decodifica della risposta JSON: $e');
+        //print('Errore nella decodifica della risposta JSON: $e');
         return null;
       }
     } else {
-      print('Risposta nulla dal provider.');
+      //print('Risposta nulla dal provider.');
       return null;
     }
   }
